@@ -12,6 +12,11 @@ int main(int argc, char **argv){
     
     while( *line != EOF ){
         getline(&line, &max, stdin);
+        printf("%s\n", line);
+        printf("Size: %d\n", strlen(line));
+        if(strlen(line) <= 1){
+            break;
+        }
     }
     printf("Old Line Length: %d\n", (size_t)strlen(line));
     line = remove_blanks(line);
