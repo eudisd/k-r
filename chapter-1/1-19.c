@@ -1,16 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#define MAX 100
 void reverse(char *s);
 
 int main(){
     
-    char *line = "Here goes";
+    char *line;
+    int max = MAX;
+
+    line = (char*)malloc(sizeof(char)*max);
     
-    printf("%s\n", line);
-    reverse(line);
-    printf("%s\n", line);
+    while(1){
+        getline(&line, &max, stdin);
+        printf("%s\n", line);
+        reverse(line);
+        printf("%s\n", line);
+        if(strlen(line) <= 1){
+            break;
+        }
+    }
     return EXIT_SUCCESS;
 }
 
