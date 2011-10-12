@@ -10,7 +10,20 @@
  * n should be a symbolic constant, or a variable constant, but it should
  * be fixed.
  */
+#define TABSTOP 4
 
-int main(){
+int main(void ){
+    char c;
+    int i;
+    
+    while((c = getchar()) != EOF){
+        if(c == '\t'){
+            for(i = 0; i < TABSTOP; i++){
+                printf(" ");
+            }
+        } else {
+            printf("%c", c);
+        }
+    }
     return EXIT_SUCCESS;
 }
