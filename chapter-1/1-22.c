@@ -6,6 +6,19 @@
  * with very long lines, and if there are no blanks or tabs before the
  * specified column. 
  */
+
+#define N 64
+
 int main(){
+    
+    char c, i = 0;
+    while((c = getchar()) != EOF){
+        if(i % (N + 1) == 0){
+            printf("\n");
+        } else {
+            printf("%c", c);
+        }
+        i++;
+    }
     return EXIT_SUCCESS;
 }
