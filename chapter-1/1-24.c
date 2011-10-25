@@ -27,28 +27,53 @@ int main(){
                 
             }
         } else if( c == '\''){
-
+            if(check_stack('\'') == 0){
+                stack[i] = '\'';
+                i++;
+            } else {
+                i--;
+                stack[i] = 0;
+            }
         } else if( c == '{'){
-
+            stack[i] = '{';
+            i++;
         } else if( c == '}'){
-
+            if(check_stack('{') == 1){
+                i--;
+                stack[i] = 0;
+            } else {
+                printf("Error! There are dangling '}'!!!\n");
+                exit(-1);
+            }
         } else if( c == '('){
-
+            stack[i] = '(';
+            i++;
         } else if( c == ')'){
-
+            if(check_stack('(') == 1){
+                i--;
+                stack[i] = 0;
+            } else {
+                printf("Error! There are dangling ')'!!!\n");
+                exit(-1);
+            }
         }
 
         if(c == '\n'){
             int k;
+            printf("Current Stack (Size %d): \n\n", i);
             for(k = 0; k <= i; k++){
                 if(stack[k] != 0)
-                    printf("%c\n", stack[k]);
+                    printf("Index: %d, %c\n", k,  stack[k]);
             }
-            //check_for_errors();
+
+            if(i > 0){
+                printf("There is a syntax error in your code!!!\n");
+                exit(-1);
+            }
             // Reset everything here
             for(k=0; k< STACK_SIZE; k++)
                 stack[k] = 0;
-
+            
             i = 0;
         }
     }
