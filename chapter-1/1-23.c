@@ -14,7 +14,7 @@ char peekchar();
 
 int main(){
 
-    char c;
+    char c, c_peek;
     char state = OUTSIDE;
     while((c = getchar()) != EOF){
         if (c == '"' && state == OUTSIDE){
@@ -22,13 +22,16 @@ int main(){
         } else if (c == '"' && state == INSIDE_STRING){
             state = OUTSIDE;
         } else if(c == '/' && state == OUTSIDE){
-            char c_peek = peekchar();
+            c_peek = peekchar();
             if(c_peek == '*'){
+                c = getchar();
                 state = INSIDE;
             }
-        } else if(c == '*' && state = INSIDE){
+        } else if(c == '*' && state == INSIDE){
             c_peek = peekchar();
             if(c_peek = '/'){
+                c = getchar();
+                c = getchar();
                 state = OUTSIDE;
             }
         }
