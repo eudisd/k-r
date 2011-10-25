@@ -31,6 +31,8 @@ int main(){
 }
 
 char peekchar(){
-    c = getchar();
-    ungetc(c, stdin)
+    char c = getchar();
+    if(c != EOF)
+        ungetc(c, stdin);
+    return 0;
 }
