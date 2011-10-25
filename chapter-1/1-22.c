@@ -13,12 +13,21 @@ int main(){
     
     char c, i = 0;
     while((c = getchar()) != EOF){
-        if(i % (N + 1) == 0){
+        if(i < N) {
+            printf("%c", c);
+            i++;
+        }
+        else if(i % N == 0){
             printf("\n");
+            i = 0;
         } else {
             printf("%c", c);
+            i++;
         }
-        i++;
+
+        if( c == '\n' ){
+            i = 0;
+        }
     }
     return EXIT_SUCCESS;
 }
