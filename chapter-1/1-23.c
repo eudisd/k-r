@@ -8,6 +8,7 @@
 
 #define INSIDE 0
 #define OUTSIDE 1
+#define INSIDE_STRING 2
 
 char peekchar();
 
@@ -15,15 +16,26 @@ int main(){
 
     char c;
     char state = OUTSIDE;
-    while((c = getchar()) != NULL){
-
-        if(c == '/'){
-            c = peekchar();
+    while((c = getchar()) != EOF){
+        if (c == '"' && state == OUTSIDE){
+            state = INSIDE_STRING; 
+        } else if (c == '"' && state == INSIDE_STRING){
+            state = OUTSIDE;
+        } else if(c == '/' && state == OUTSIDE){
+            char c_peek = peekchar();
+            if(c_peek == '*'){
+                state = INSIDE;
+            }
+        } else if(c == '*' && state = INSIDE){
+            c_peek = peekchar();
+            if(c_peek = '/'){
+                state = OUTSIDE;
+            }
         }
 
-        if(state = INSIDE){
+        if(state == INSIDE){
             continue;
-        } else if (state = OUTSIDE) {
+        } else if (state == OUTSIDE || state == INSIDE_STRING) {
             printf("%c", c);
         }
     }
@@ -34,5 +46,5 @@ char peekchar(){
     char c = getchar();
     if(c != EOF)
         ungetc(c, stdin);
-    return 0;
+    return c;
 }
