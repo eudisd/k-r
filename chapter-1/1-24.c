@@ -6,6 +6,18 @@
  * (This program is hard if you do it in generality).
  */
 
+
+char paren_stack[256],
+     bracket_stack[256],
+     quote_stack[256],
+     sq_stack[256],
+     comment_stack[256];
+
 int main(){
+
+    char c;
+    while((c = getchar()) != EOF){
+        
+    }
     return EXIT_SUCCESS;
 }
