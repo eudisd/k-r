@@ -57,5 +57,9 @@ int main(void){
             0, (unsigned int)pow(2.0, (int)sizeof(int)*8) - 1,
             0, (unsigned int)pow(2.0, (int)sizeof(long)*8) - 1); 
 
-
+    printf("\n\nFloating Point/Double\n\n");
+    printf("float - Range [%f, %f]\n"
+           "double - Range [%f, %f]\n",
+           FLT_MIN, FLT_MAX,
+           DBL_MIN, DBL_MAX);
     }
