@@ -22,9 +22,9 @@ int main(void){
            "unsigned int: %d\n"
            "unsigned long: %d\n",
              
-            sizeof(unsigned short), 
-            sizeof(unsigned int), 
-            sizeof(unsigned long));
-
+            0, UCHAR_MAX,
+            0, USHRT_MAX,
+            0, UINT_MAX,
+            0, ULONG_MAX); 
 
     }
