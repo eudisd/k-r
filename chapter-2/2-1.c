@@ -52,10 +52,10 @@ int main(void){
            "unsigned short - Range [%d, %d]\n"
            "unsigned int - Range [%u, %u]\n"
            "unsigned long - Range [%u, %u]\n",
-            0, UCHAR_MAX,
-            0, USHRT_MAX,
-            0, UINT_MAX,
-            0, ULONG_MAX); 
+            0, (unsigned int)pow(2.0, (int)sizeof(char)*8) - 1,
+            0, (unsigned int)pow(2.0, (int)sizeof(short)*8) - 1,
+            0, (unsigned int)pow(2.0, (int)sizeof(int)*8) - 1,
+            0, (unsigned int)pow(2.0, (int)sizeof(long)*8) - 1); 
 
 
     }
