@@ -7,7 +7,7 @@ int main(void){
     
     printf("Signed\n\n");
     printf("char - Range [%d, %d]\n"
-           "short - Range [%d, %d] %d\n"
+           "short - Range [%d, %d]\n"
            "int - Range [%d, %d]\n"
            "long - Range [%d, %d]\n",
             CHAR_MIN, CHAR_MAX,
@@ -17,11 +17,11 @@ int main(void){
     
     printf("\n\nUnsigned\n\n");
     
-    printf("unsigned char: %d\n"
-           "unsigned short: %d\n"
-           "unsigned int: %d\n"
-           "unsigned long: %d\n",
              
+    printf("unsigned char - Range [%d, %d]\n"
+           "unsigned short - Range [%d, %d]\n"
+           "unsigned int - Range [%u, %u]\n"
+           "unsigned long - Range [%u, %u]\n",
             0, UCHAR_MAX,
             0, USHRT_MAX,
             0, UINT_MAX,
