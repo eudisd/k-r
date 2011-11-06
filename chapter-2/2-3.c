@@ -12,7 +12,7 @@
 int htoi(char s[]);
 
 int main(void){
-    printf("Digit: %d\n", htoi("1"));
+    printf("Digit: %d\n", htoi("10"));
     return 0;
 }
 
@@ -37,8 +37,7 @@ int htoi(char s[]){
         } else if (s[i] >= 'a' && s[i] <= 'f') {
             n = n + ((int)pow(16.0, (double)c )) * hex[s[i] - 'a'];
         } else if (s[i] >= '0' && s[i] <= '9') {
-            n = n + my_pow(16, c ) * (int)hex[s[i]);
-            printf("C: %d, N: %d, Hex: %d\n",c, n, s[i] - '0');
+            n = n + ((int)pow(16.0, (double)c )) * (int)(s[i] - '0');
         } else {
             return n;
             break;        
