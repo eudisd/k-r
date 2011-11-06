@@ -7,6 +7,32 @@
  * a through f, and A through F.
  **/
 
+int htoi(char s[]);
+
 int main(void){
     return 0;
 }
+
+int htoi(char s[]){
+
+    int i = 0;
+    int hex[5] = {10, 11, 12, 13, 14, 15};
+    int n = 0;
+    
+    while(1){
+               
+        if( s[0] == '0' && (s[1] == 'X' || s[1] == 'x') ){
+           continue; 
+        } else if (s[i] >= 'A' && s[i] <= 'F') {
+                       
+        } else if (s[i] >= 'a' && s[i] <= 'f') {
+
+        } else if (s[i] >= '0' && s[i] <= '9') {
+
+        } else {
+            break;        
+        }
+    }
+}
+
+
