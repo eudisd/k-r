@@ -12,7 +12,7 @@
 int htoi(char s[]);
 
 int main(void){
-    printf("Digit: %d\n", htoi("0xAF"));
+    printf("Digit: %d\n", htoi("0xa"));
     return 0;
 }
 
@@ -20,32 +20,26 @@ int htoi(char s[]){
 
     int len = strlen(s);
 
+    if( len == 0 ) return 0;
+    if( len == 2 && s[0] == '0' && (s[1] == 'x' || s[1] == 'X')) return 0;
     int i = len - 1, c = 0;
     int hex[6] = {10, 11, 12, 13, 14, 15};
     int n = 0;
     
     while(1){
         printf("Letter: %c \n", s[i]); 
-        if( i == 0 && (s[i] == '0' 
-                   && (s[i + 1] == 'X' || s[i + 1] == 'x'))){
-            ++i;
-            --c;
-            continue;
-        } else if ( i == 1 && (s[i] == 'X' || s[i] == 'X') ) {
-            ++i;
-            --c;
-            continue;
+        if( i == 1 && (s[i - 1] == '0' && (s[i] == 'X' || s[i] == 'x'))){
+        //} else if ( i == 1 && (s[i] == 'X' || s[i] == 'x') ) {
         } else if (s[i] >= 'A' && s[i] <= 'F') {
             n = n + ((int)pow(16.0, (double)c )) * hex[s[i] - 'A']; 
-            printf("N: %d\n", n);
         } else if (s[i] >= 'a' && s[i] <= 'f') {
-
+            n = n + ((int)pow(16.0, (double)c )) * hex[s[i] - 'a'];
         } else if (s[i] >= '0' && s[i] <= '9') {
-
-        } else if (i >= len) {
+            n = n + ((int)pow(16.0, (double)c )) * hex[s[i] - '0'];
+        }/* else if (c >= len || i <= 1) {
             return n;
             break;  
-        } else {
+        }*/ else {
             return n;
             break;        
         }
