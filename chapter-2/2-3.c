@@ -20,23 +20,33 @@ int htoi(char s[]){
 
     int len = strlen(s);
 
-    int i = len, c = 0;
+    int i = len - 1, c = 0;
     int hex[6] = {10, 11, 12, 13, 14, 15};
     int n = 0;
     
     while(1){
-               
-        if( s[0] == '0' && (s[1] == 'X' || s[1] == 'x') ){
-           continue;
-        } else if ( i > 0 && (s[0] == 'X' || s[0] == 'X') ) {
-           continue;
+        printf("Letter: %c \n", s[i]); 
+        if( i == 0 && (s[i] == '0' 
+                   && (s[i + 1] == 'X' || s[i + 1] == 'x'))){
+            ++i;
+            --c;
+            continue;
+        } else if ( i == 1 && (s[i] == 'X' || s[i] == 'X') ) {
+            ++i;
+            --c;
+            continue;
         } else if (s[i] >= 'A' && s[i] <= 'F') {
-          n = n + ((int)pow(16.0, (double)c )) * hex[s[i] - 'A'];             
+            n = n + ((int)pow(16.0, (double)c )) * hex[s[i] - 'A']; 
+            printf("N: %d\n", n);
         } else if (s[i] >= 'a' && s[i] <= 'f') {
 
         } else if (s[i] >= '0' && s[i] <= '9') {
 
+        } else if (i >= len) {
+            return n;
+            break;  
         } else {
+            return n;
             break;        
         }
         --i;
