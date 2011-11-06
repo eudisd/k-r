@@ -16,6 +16,7 @@ int main(void){
     return 0;
 }
 
+
 int htoi(char s[]){
 
     int len = strlen(s);
@@ -27,7 +28,7 @@ int htoi(char s[]){
     int n = 0;
     
     while(1){
-        if( c >= len || i <= 1){
+        if( c >= len ){
             return n;
         }
         if( i == 1 && (s[i - 1] == '0' && (s[i] == 'X' || s[i] == 'x'))){
@@ -36,7 +37,8 @@ int htoi(char s[]){
         } else if (s[i] >= 'a' && s[i] <= 'f') {
             n = n + ((int)pow(16.0, (double)c )) * hex[s[i] - 'a'];
         } else if (s[i] >= '0' && s[i] <= '9') {
-            n = n + ((int)pow(16.0, (double)c )) * (int)hex[s[i] - '0'];
+            n = n + my_pow(16, c ) * (int)hex[s[i]);
+            printf("C: %d, N: %d, Hex: %d\n",c, n, s[i] - '0');
         } else {
             return n;
             break;        
@@ -45,5 +47,4 @@ int htoi(char s[]){
         ++c;
     }
 }
-
 
