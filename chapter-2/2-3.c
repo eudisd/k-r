@@ -12,7 +12,7 @@
 int htoi(char s[]);
 
 int main(void){
-    printf("Digit: %d\n", htoi("0xa"));
+    printf("Digit: %d\n", htoi("1"));
     return 0;
 }
 
@@ -27,19 +27,17 @@ int htoi(char s[]){
     int n = 0;
     
     while(1){
-        printf("Letter: %c \n", s[i]); 
+        if( c >= len || i <= 1){
+            return n;
+        }
         if( i == 1 && (s[i - 1] == '0' && (s[i] == 'X' || s[i] == 'x'))){
-        //} else if ( i == 1 && (s[i] == 'X' || s[i] == 'x') ) {
         } else if (s[i] >= 'A' && s[i] <= 'F') {
             n = n + ((int)pow(16.0, (double)c )) * hex[s[i] - 'A']; 
         } else if (s[i] >= 'a' && s[i] <= 'f') {
             n = n + ((int)pow(16.0, (double)c )) * hex[s[i] - 'a'];
         } else if (s[i] >= '0' && s[i] <= '9') {
-            n = n + ((int)pow(16.0, (double)c )) * hex[s[i] - '0'];
-        }/* else if (c >= len || i <= 1) {
-            return n;
-            break;  
-        }*/ else {
+            n = n + ((int)pow(16.0, (double)c )) * (int)hex[s[i] - '0'];
+        } else {
             return n;
             break;        
         }
