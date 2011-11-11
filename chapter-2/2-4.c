@@ -7,11 +7,12 @@
  */
 
 int squeeze(char s1[], char s2[]);
-char *shift_left(char at[], int n);
+char *shift_left(char s[], int at, int n);
 int main(void){
 
     char a[] = "Hi there";
-    printf("Original: %s", a);
+    printf("Original: %s\n", a);
+    printf("New: %s\n", shift_left(a, 1, strlen(a)));
     return EXIT_SUCCESS;
 }
 
@@ -26,11 +27,13 @@ int squeeze(char s1[], char s2[]){
     }
 }
 
-char *shift_left(char *at, int n){
+char *shift_left(char *s, int at, int n){
 
     int i;
-    for(i = 0; i < n - 1; i++)
-        at[i] = at[i + 1];
+    for(i = at; i < n - 1; i++)
+        s[i] = s[i + 1];
 
-    return at;
+    s[i] = '\0';
+
+    return s;
 }
