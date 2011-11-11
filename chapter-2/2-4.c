@@ -7,27 +7,29 @@
  */
 
 int squeeze(char s1[], char s2[]);
-char *shift_left(char s[], int at, int n);
+void shift_left(char s[], int at, int n);
 int main(void){
 
     char a[] = "Hi there";
     printf("Original: %s\n", a);
-    printf("New: %s\n", shift_left(a, 1, strlen(a)));
+    shift_left(a, 1, strlen(a));
+    printf("New: %s\n", a);
     return EXIT_SUCCESS;
 }
 
 int squeeze(char s1[], char s2[]){
 
-    int i = 0, j;
+    int i = 0, j = 0;
     for(; i < strlen(s2); i++){
-        
-        while( *s1 != '\0' ){
-            
+        for(; j < strlen(s1); i++){
+            if(s2[i] == s1[i]){
+               // shift_left(
+            }
         }
     }
 }
 
-char *shift_left(char *s, int at, int n){
+void shift_left(char *s, int at, int n){
 
     int i;
     for(i = at; i < n - 1; i++)
