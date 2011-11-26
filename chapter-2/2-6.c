@@ -8,7 +8,7 @@
  */
 
 void printbits(int x);
-void setbits(int x, int p, int n, int y);
+int setbits(int x, int p, int n, int y);
 
 int main(void){
     int x = 2;
@@ -24,7 +24,7 @@ void printbits(int x){
     printf("%d", x & 0x1);
 }
 
-void setbits(int x, int p, int n, int y){
+int setbits(int x, int p, int n, int y){
 
 
 }
