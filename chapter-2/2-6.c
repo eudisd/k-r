@@ -28,5 +28,5 @@ void printbits(char s[32], int x){
 }
 
 int setbits(int x, int p, int n, int y){
-    return ((x >> (p + 1 - n)) | ((~(~0 << n)) & y) << p + 1);
+    return (((x >> (p + 1 - n)) | ((~(~0 << n)) & y)) << p) | x;
 }
