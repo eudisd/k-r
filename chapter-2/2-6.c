@@ -15,6 +15,7 @@ int main(void){
     printbits("x", x);
     printbits("y", y);
 
+    printbits("z", setbits(x, 3, 3, y));
 }
 
 void printbits(char s[32], int x){
@@ -23,10 +24,9 @@ void printbits(char s[32], int x){
     for(i = sizeof(int)*8 - 1; i > 0; i--){
         printf("%d", (x >> i) & 0x1); 
     }
-    printf("%d", x & 0x1);
+    printf("%d\n", x & 0x1);
 }
 
 int setbits(int x, int p, int n, int y){
-
-
+    return ((x >> (p + 1 - n)) | ((~(~0 << n)) & y) << p + 1);
 }
