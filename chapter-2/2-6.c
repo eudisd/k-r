@@ -7,17 +7,19 @@
  * bits unchanged. 
  */
 
-void printbits(int x);
+void printbits(char s[32], int x);
 int setbits(int x, int p, int n, int y);
 
 int main(void){
-    int x = 2;
-    printbits(x);
+    int x = 2, y = 3;
+    printbits("x", x);
+    printbits("y", y);
+
 }
 
-void printbits(int x){
+void printbits(char s[32], int x){
     int i;
-    printf("int x = %d\n\n", x);
+    printf("\nint %s = %d\n\n", s, x);
     for(i = sizeof(int)*8 - 1; i > 0; i--){
         printf("%d", (x >> i) & 0x1); 
     }
