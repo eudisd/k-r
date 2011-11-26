@@ -7,6 +7,14 @@
  * version of bitcount
  */
 
+
+/* Answer:
+ * The reason this operation deletes the rightmost bit is because
+ * subtraction by one requires the right most bit (2^0 = 1).  In
+ * 2's completement this expands to x = x & (x + (~1 + 1)), which 
+ * holds in fliping the right most bit when &'ed by x.  
+ */
+
 int main(void){
     return EXIT_SUCCESS;
 }
