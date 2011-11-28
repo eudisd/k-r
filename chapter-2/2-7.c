@@ -2,14 +2,19 @@
 #include <stdlib.h>
 
 /* Problem:
- * Write a function invert(x, p, n) that returns x with n bits that begin
- * at position p inverted (i.e., 1 changed into 0 and vice versa), leaving
- * the others unchanged.
+   Write a function invert(x, p, n) that returns x with n 
+   bits that begin at position p inverted (i.e., 1 changed 
+   into 0 and vice versa), leaving the others unchanged.
  */
 
 void printbits(char s[32], int x);
+int invert(int x, int p, int n);
 
 int main(void){
+	int x = 33;
+	printbits("x", x);
+	
+	printbits("z", x);
     return EXIT_SUCCESS;
 }
 
@@ -20,4 +25,8 @@ void printbits(char s[32], int x){
         printf("%d", (x >> i) & 0x1); 
     }
     printf("%d\n", x & 0x1);
+}
+
+int invert(int x, int p, int n){
+	return (( ~(x >> (p - n + 1)) & ~(~0 << n)) << p) | x);
 }
