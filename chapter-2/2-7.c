@@ -31,5 +31,6 @@ int invert(int x, int p, int n){
 	return (
             (
             ( (~(x >> (p - n + 1))) & (~(~0 << n))) << p + 1
-            ) | x);
+            ) | (x & ~(~0 << p))
+           );
 }
