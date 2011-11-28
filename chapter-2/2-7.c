@@ -11,7 +11,7 @@ void printbits(char s[32], int x);
 int invert(int x, int p, int n);
 
 int main(void){
-	int x = 37;
+	int x = 33;
 	printbits("x", x);
 	
 	printbits("z", invert(x, 5, 2));
@@ -31,6 +31,6 @@ int invert(int x, int p, int n){
 	return (
             (
             ( (~(x >> (p - n + 1))) & (~(~0 << n))) << p + 1
-            ) | (x & ~(~0 << p))
+            ) | x
            );
 }
