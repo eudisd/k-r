@@ -12,10 +12,10 @@ int invert(int x, int p, int n);
 int clearbits(int x, int p, int n);
 
 int main(void){
-	int x = 49;
+	int x = 37;
 	printbits("x", x);
 	
-	printbits("z", invert(x, 5, 2));
+	printbits("z", invert(x, 6, 2));
     return EXIT_SUCCESS;
 }
 
@@ -31,7 +31,7 @@ void printbits(char s[32], int x){
 int invert(int x, int p, int n){
 	return (
             (
-            ( (~(x >> (p - n + 1))) & (~(~0 << n))) << p - n + 1
+             (~(x >> (p - n + 1)) & (~(~0 << n))) << p - n + 1
             ) | (clearbits(x, p, n))
            );
 }
