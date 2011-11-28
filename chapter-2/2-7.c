@@ -28,5 +28,8 @@ void printbits(char s[32], int x){
 }
 
 int invert(int x, int p, int n){
-	return (( ~(x >> (p - n + 1)) & ~(~0 << n)) << p) | x);
+	return (((
+		   ~(x >> (p - n + 1)) & 
+           ~(~0 << n)
+           ) << p) | x);
 }
