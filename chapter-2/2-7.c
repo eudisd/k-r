@@ -11,7 +11,7 @@ void printbits(char s[32], int x);
 int invert(int x, int p, int n);
 
 int main(void){
-	int x = 33;
+	int x = 37;
 	printbits("x", x);
 	
 	printbits("z", invert(x, 5, 2));
