@@ -7,9 +7,13 @@
  */
 
 void printbits(char s[32], int x);
-void rightrot(int x, int y);
+int rightrot(int x, int y);
 
 int main(void){
+    int x = 93;
+    printbits("x", x);
+
+    printbits("z", rightrot(x, 3));
     return EXIT_SUCCESS;
 }
 
@@ -23,5 +27,5 @@ void printbits(char s[32], int x){
 }
 
 int rightrot(int x, int y){
-    return (x >> y) | ((x & ~(~0 << y)) << (sizeof(int)*8 - y); 
+    return (x >> y) | ((x & ~(~0 << y)) << (sizeof(int)*8 - y)); 
 }
