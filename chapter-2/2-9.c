@@ -15,6 +15,19 @@
  * holds in fliping the right most bit when &'ed by x.  
  */
 
+int bitcount(unsigned x);
+
 int main(void){
+    unsigned x = 0xf;
+    printf("number of bits? %d\n", bitcount(x));
     return EXIT_SUCCESS;
+}
+
+int bitcount(unsigned x)
+{
+    int b;
+    for(b = 0; x != 0; x >>= 1)
+        if(x & 0x1)
+            b++;
+    return b;
 }
