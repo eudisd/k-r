@@ -19,9 +19,9 @@ int main(void)
         t1 = microsec();
         binsearch(1, v, 10);
         t2 = microsec();
-        diff += (t2.tv_usec - t1.tv_usec);
+        diff += (t2 - t1);
     }
-    diff /= 30.0;
+    diff /= 30;
     printf("No optimization: %f\n", diff);
     return EXIT_SUCCESS;
 }
@@ -29,7 +29,8 @@ double microsec(void)
 {
     struct timeval t1;
     struct timezone tz;
-    return (double)gettimeofday(&t1, &tz);
+    gettimeofday(&t1, &tz);
+    return ((double)t1.tv_sec + (double)t1.tv_usec)/((double)1000000);
 }
 int binsearch(int x, int v[], int n)
 {
