@@ -9,14 +9,15 @@
 
 double microsec(void);
 int binsearch(int x, int v[], int n);
-void sort(int v[]);
+void sort(int v[], int n);
+void swap(int *a, int *b);
 const int ARRAY_SIZE = 1000000;
 int main(void)
 {
     int i;
     double t1, t2, diff;
     int *v = (int*)malloc(sizeof(int)*ARRAY_SIZE);
-    sort(v);
+    //sort(v, ARRAY_SIZE);
    
     for(i = 0, diff=0.0; i < ARRAY_SIZE; i++){
         t1 = microsec();
@@ -44,9 +45,32 @@ double microsec(void)
     gettimeofday(&t1, &tz);
     return ((double)t1.tv_sec + (double)t1.tv_usec)/((double)1000000);
 }
-void sort(int v[])
+void sort(int v[], int n)
 {
+    int i, j, sorted = 0;
+    while(!sorted){
+        // First check if it's sorted
+        for(j = 0; j < ARRAY_SIZE - 1; j++){
+            if(v[i] > v[i + 1]){
+                sorted = 0;
+                break;
+            } else {
+                sorted = 1;
+            }
+        }
 
+        for(i = 0; i < ARRAY_SIZE - 1; i++){
+            if(v[i] > v[i + 1])
+                swap(&v[i], &v[i + 1]);
+
+        }
+    }
+}
+
+void swap(int *a, int *b){
+    int temp = *b;
+    *b = *a;
+    *a = temp;
 }
 
 int binsearch_opt(int x, int v[], int n)
