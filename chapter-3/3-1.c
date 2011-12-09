@@ -12,6 +12,7 @@ int binsearch(int x, int v[], int n);
 void sort(int v[], int n);
 void swap(int *a, int *b);
 const int ARRAY_SIZE = 1000000;
+const int AVG = 30;
 int main(void)
 {
     int i;
@@ -19,32 +20,22 @@ int main(void)
     int *v = (int*)malloc(sizeof(int)*ARRAY_SIZE);
     sort(v, ARRAY_SIZE);
     
-
-    int v2[] = {0, 2, 5, 1, 6, 8};
-    for(i = 0; i < 6; i ++)
-        printf("%d", v2[i]);
-
-    sort(v2, 6);
-    printf("\n");
-    for(i = 0; i < 6; i++)
-        printf("%d", v2[i]);
-
-    for(i = 0, diff=0.0; i < ARRAY_SIZE; i++){
+    for(i = 0, diff=0.0; i < AVG; i++){
         t1 = microsec();
         binsearch(1, v, ARRAY_SIZE);
         t2 = microsec();
         diff += (t2 - t1);
     }
-    diff /= ARRAY_SIZE;
+    diff /= AVG;
     printf("No optimization: %f\n", diff);
     
-    for(i = 0, diff=0.0; i < ARRAY_SIZE; i++){
+    for(i = 0, diff=0.0; i < AVG; i++){
         t1 = microsec();
         binsearch_opt(1, v, ARRAY_SIZE);
         t2 = microsec();
         diff += (t2 - t1);
     }
-    diff /= ARRAY_SIZE;
+    diff /= AVG;
     printf("With optimization: %f\n", diff);
     return EXIT_SUCCESS;
 }
