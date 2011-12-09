@@ -17,8 +17,18 @@ int main(void)
     int i;
     double t1, t2, diff;
     int *v = (int*)malloc(sizeof(int)*ARRAY_SIZE);
-    //sort(v, ARRAY_SIZE);
-   
+    sort(v, ARRAY_SIZE);
+    
+
+    int v2[] = {0, 2, 5, 1, 6, 8};
+    for(i = 0; i < 6; i ++)
+        printf("%d", v2[i]);
+
+    sort(v2, 6);
+    printf("\n");
+    for(i = 0; i < 6; i++)
+        printf("%d", v2[i]);
+
     for(i = 0, diff=0.0; i < ARRAY_SIZE; i++){
         t1 = microsec();
         binsearch(1, v, ARRAY_SIZE);
@@ -50,8 +60,8 @@ void sort(int v[], int n)
     int i, j, sorted = 0;
     while(!sorted){
         // First check if it's sorted
-        for(j = 0; j < ARRAY_SIZE - 1; j++){
-            if(v[i] > v[i + 1]){
+        for(j = 0; j < n - 1; j++){
+            if(v[j] > v[j + 1]){
                 sorted = 0;
                 break;
             } else {
@@ -59,9 +69,9 @@ void sort(int v[], int n)
             }
         }
 
-        for(i = 0; i < ARRAY_SIZE - 1; i++){
+        for(i = 0; i < n - 1; i++){
             if(v[i] > v[i + 1])
-                swap(&v[i], &v[i + 1]);
+               swap(&v[i], &v[i + 1]);
 
         }
     }
