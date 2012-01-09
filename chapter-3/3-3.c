@@ -24,8 +24,10 @@ void expand(char *s1, char *s2)
 {
     int l = strlen(s1);
     if(s1[0] == '-'){
-    
+        s2[0] = '-';
     } 
+    
+    
     if(s1[l - 1] == '-'){
     
     }
