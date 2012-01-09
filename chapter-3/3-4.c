@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 /* In a two's complement number representation, our version of itoa does
  * not handle the largest negative number, that is, the value of n equals
@@ -15,12 +16,12 @@
  * postive number in a word (int).
  */
 void reverse(char *s);
-void itoa(int n, char s[]);
+void itoaa(double n, char s[]);
 
 int main(void)
 {
     char ar[100];
-    itoa(20, ar);
+    itoaa(-2147483648, ar);
     printf("%s", ar);
     return 0;
 }
@@ -33,17 +34,21 @@ void reverse(char *s){
     }
 }
        
-void itoa(int n, char s[]){
+void itoaa(double n, char s[]){
     int i, sign;
-    if((sign = n) < 0)
-        n = -n;
+    unsigned int tmp;
 
+    if((sign = (int)n) < 0)
+        tmp = (int)-n;
+    else 
+        tmp = (int)n;
+    
     i = 0;
 
     do {
-        s[i++] = n % 10 + '0';
-    } while((n /= 10) > 0);
-    if(sign > 0){
+        s[i++] = tmp % 10 + '0';
+    } while((tmp /= 10) > 0);
+    if(sign < 0){
         s[i++] = '-';
     }
     s[i] = '\0';
