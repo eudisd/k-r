@@ -39,8 +39,8 @@ void expand(char *s1, char *s2)
     }
     /* First, test what it is */
     if( l == 3 || l == 4 ){ /* a - z */
-        if(shift == 0){
-            for(i = shift; i <= (s1[l - 1] - s1[shift]); i++){
+        if(shift == 0){ /* s[l - 1] == '-' */
+            for(i = shift; i <= (s1[l - 2] - s1[shift]); i++){
                 if(shift == 0)
                     s2[i] = s1[shift] + i;
                 else 
@@ -53,21 +53,20 @@ void expand(char *s1, char *s2)
                 else 
                     s2[i] = s1[shift] + (i - 1);
             }
-        
+            
         }
-        printf("\n%d\n", i);
         end_flag = i;
     } else if(s1[shift + 1] == '-' && s1[shift + 3] == '-'){  /* a-b-c */
         a = s1[shift];
         b = s1[shift + 2];
         c = s1[shift + 4];
-        for(i = shift; i < (b - a); i++){ /* a - b */
+        for(i = shift; i < abs(b - a); i++){ /* a - b */
             if(shift == 0)
                 s2[i] = a + i;
             else 
                 s2[i] = a + (i - 1);
         }
-        for(; i <= (b - a) + (c - b); i++){
+        for(; i <= abs(b - a) + abs(c - b); i++){
             if(shift == 0)
                 s2[i] = a + i;
             else 
