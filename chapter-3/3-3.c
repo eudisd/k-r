@@ -13,7 +13,7 @@ void expand(char *s1, char *s2);
 
 int main(void)
 {
-    char *s1 = "-a-z", s2[100] = {0};
+    char *s1 = "a-z-", s2[100] = {0};
     printf("s1: %s\n", s1);
     expand(s1, s2);
     printf("\nExpanded: %s\n", s2);
@@ -39,12 +39,23 @@ void expand(char *s1, char *s2)
     }
     /* First, test what it is */
     if( l == 3 || l == 4 ){ /* a - z */
-        for(i = shift; i <= (s1[l - 1] - s1[shift]); i++){
-            if(shift == 0)
-                s2[i] = s1[shift] + i;
-            else 
-                s2[i] = s1[shift] + (i - 1);
+        if(shift == 0){
+            for(i = shift; i <= (s1[l - 1] - s1[shift]); i++){
+                if(shift == 0)
+                    s2[i] = s1[shift] + i;
+                else 
+                    s2[i] = s1[shift] + (i - 1);
+            }
+        } else {
+            for(i = shift; i <= (s1[l - 1] - s1[shift]) + 1; i++){
+                if(shift == 0)
+                    s2[i] = s1[shift] + i;
+                else 
+                    s2[i] = s1[shift] + (i - 1);
+            }
+        
         }
+        printf("\n%d\n", i);
         end_flag = i;
     } else if(s1[shift + 1] == '-' && s1[shift + 3] == '-'){  /* a-b-c */
         a = s1[shift];
@@ -78,7 +89,7 @@ void expand(char *s1, char *s2)
         }
         end_flag = i;
     }
-    
+    printf("\n%d\n", end_flag); 
     if(s1[l - 1] == '-'){
         s2[end_flag] = '-';
     }
