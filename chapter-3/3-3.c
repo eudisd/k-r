@@ -13,7 +13,7 @@ void expand(char *s1, char *s2);
 
 int main(void)
 {
-    char *s1 = "a-z-", s2[100] = {0};
+    char *s1 = "0-9", s2[100] = {0};
     printf("s1: %s\n", s1);
     expand(s1, s2);
     printf("\nExpanded: %s\n", s2);
