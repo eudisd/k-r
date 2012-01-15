@@ -7,7 +7,7 @@
  */
 
 
-void itoa(double n, char s[], int w){
+void itoa(double n, char s[], int w);
 
 int main(void)
 {
