@@ -10,6 +10,7 @@
 
 void itoa(double n, char s[], int w);
 void reverse(char *s);
+void shift_right(char *s, int n);
 
 int main(void)
 {
@@ -53,10 +54,12 @@ void itoa(double n, char s[], int w){
     if(i > w){
         s[w] = '\0';
     } else if( (w - i) > 0 ) {
-        for(; i < w; i++){
-            s[i] = '0';
-        }
-        s[i] = '\0';
+        shift_right(s, (w - i));
     }
+
+}
+void shift_right(char *s, int n)
+{
+        
 
 }
