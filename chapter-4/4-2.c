@@ -9,7 +9,7 @@ double atof(char s[]);
 
 int main(void)
 {
-    char *f = "0.123";
+    char *f = "0.123e-1";
 
     printf("String: %s\n Float: %f\n", f, atof(f));    
     return 0;
@@ -55,12 +55,12 @@ double atof(char s[])
     for(e_val = 0.0; isdigit(s[i]); i++){
         e_val = 10.0*e_val + (s[i] - '0');
     }
-
+    
     if(e_sign == -2){
         return sign * val / power;
     } else if (e_sign == -1){
-
-    } else if (e_sign == 1){
-
+        return sign * val / power / (e_val * 10.0);
+    } else {
+        return sign * val / power * (e_val * 10);
     }
 }
