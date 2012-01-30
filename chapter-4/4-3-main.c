@@ -37,7 +37,7 @@ int main(void)
                     printf("Error: zero divisor!\n");
                 break;
             case '\n':
-                pritnf("\t%.8g\n", pop());
+                printf("\t%.8g\n", pop());
                 break;
             default:
                 printf("Error: unknow command? %s\n", s);
