@@ -3,6 +3,11 @@
 
 #define MAXOP 100
 #define NUMBER '0'
+/* 4-3
+ * Given the basic framework, it's straightforward to extend the
+ * calculator.  Add the modulus (%) operator and provisions for negative
+ * numbers
+ */
 
 int getop(char s[]);
 void push(double e);
