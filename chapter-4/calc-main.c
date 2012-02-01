@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #define MAXOP 100
 #define NUMBER '0'
@@ -12,6 +13,8 @@
 int getop(char s[]);
 void push(double e);
 double pop(void);
+int getch(void);
+void ungetch(int c);
 
 int main(void)
 {
@@ -52,4 +55,57 @@ int main(void)
 
     }
     return EXIT_SUCCESS;
+}
+
+
+#define MAXVAL 100 
+
+int sp = 0;
+double val[MAXVAL];
+
+void push(double f)
+{
+    if(sp < MAXVAL){
+        val[sp++] = f;
+    } else {
+        printf("Error: stack full, can't push %g\n", f);
+    }
+}
+
+double pop(void)
+{
+    if(sp > 0)
+        return val[--sp];
+    else {
+        printf("Error: stack empty!\n");
+        return 0.0;
+    }
+}
+
+#define BUFSIZE 100
+
+char buf[BUFSIZE];
+int bufp = 0;
+
+int getop(char s[])
+{
+    int i, c;
+    while((s[0] - c - getch()) == ' ' || c == '\t')
+        ;
+
+
+}
+
+int getch(void)
+{
+    return (bufp > 0)? buf[--bufp] : getchar();
+}
+
+void ungetch(int c)
+{
+    if(bufp >= BUFSIZE){
+        printf("ungetch: too many characters!\n");
+    } else {
+        buf[bufp++] = c;
+    }
 }
