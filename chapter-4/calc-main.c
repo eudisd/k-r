@@ -28,6 +28,14 @@ int main(void)
             case NUMBER:
                 push(atof(s));
                 break;
+            case '%':
+                op2 = pop();
+                if( op2 != 0 ){
+                    push((int)pop() % (int)op2);
+                } else {
+                    printf("Error: zzero divisor!\n");
+                }
+                break;
             case '+':
                 push(pop() + pop());
                 break;
