@@ -8,6 +8,17 @@
  * Given the basic framework, it's straightforward to extend the
  * calculator.  Add the modulus (%) operator and provisions for negative
  * numbers
+ 
+ * 4-4
+ * Add commands to print the top of the stack without popping, to duplicate
+ * it, and to swap the top two elements.  Add a command to clear the stack
+ *
+ 
+ * 4-5
+ * Add access to library functions like sin, exp, and pow.  See <math.h>
+ * in appendix B, Section 4
+ 
+ 
  */
 
 int getop(char s[]);
@@ -16,6 +27,11 @@ double pop(void);
 int getop(char s[]);
 int getch(void);
 void ungetch(int c);
+
+void clear();
+void swap();
+void printTop();
+void dup();
 
 int main(void)
 {
@@ -131,4 +147,21 @@ void ungetch(int c)
     } else {
         buf[bufp++] = c;
     }
+}
+
+void clear()
+{
+
+}
+void swap()
+{
+
+}
+void printTop()
+{
+
+}
+void dup()
+{
+
 }
