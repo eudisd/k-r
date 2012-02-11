@@ -152,17 +152,20 @@ void ungetch(int c)
 
 void clear()
 {
-
+    sp = 0;
+    val[sp] = 0;
 }
 void swap()
 {
-
+    double tmp = val[sp];
+    val[sp] = val[sp - 1];
+    val[sp - 1] = tmp;
 }
 void printTop()
 {
-
+    printf("Top of Stack Value: %g\n", val[sp]);
 }
 void dup()
 {
-
+    val[sp - 1] = val[sp];
 }
