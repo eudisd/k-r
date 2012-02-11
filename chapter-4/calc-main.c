@@ -42,6 +42,18 @@ int main(void)
 
     while((type = getop(s)) != EOF) {
         switch(type) {
+            case 'c': /* Clear Stack */
+                clear();
+                break;
+            case 'p': /* Print Stack */
+                printTop();
+                break;
+            case 'd': /* Duplicate Stack */
+                dup();
+                break;
+            case 's': /* Swap Stack */
+                swap();
+                break;
             case NUMBER:
                 push(atof(s));
                 break;
