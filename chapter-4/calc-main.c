@@ -60,7 +60,9 @@ int main(void)
             case 'e': /* Exponent */
                 push(exp( pop()));
                 break;
-            case 'P':
+            case 'P': /* Power */
+                op2 = pop();
+                push( pow( pop(), op2 ) );
                 break;
             case NUMBER:
                 push(atof(s));
