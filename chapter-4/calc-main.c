@@ -54,6 +54,13 @@ int main(void)
             case 's': /* Swap Stack */
                 swap();
                 break;
+            case 'S': /* Sin(x) */
+                push(sin( pop()));
+                break;
+            case 'e': /* Exponent */
+                break;
+            case 'P':
+                break;
             case NUMBER:
                 push(atof(s));
                 break;
