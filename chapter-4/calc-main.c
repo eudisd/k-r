@@ -58,6 +58,7 @@ int main(void)
                 push(sin( pop()));
                 break;
             case 'e': /* Exponent */
+                push(exp( pop()));
                 break;
             case 'P':
                 break;
