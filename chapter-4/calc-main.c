@@ -5,20 +5,28 @@
 
 #define MAXOP 100
 #define NUMBER '0'
+#define VARIABLE '1'
+
+double var_mem[256];  /* Used to hold the variables */
+
 /* 4-3
  * Given the basic framework, it's straightforward to extend the
  * calculator.  Add the modulus (%) operator and provisions for negative
  * numbers
- 
+ *
  * 4-4
  * Add commands to print the top of the stack without popping, to duplicate
  * it, and to swap the top two elements.  Add a command to clear the stack
  *
- 
  * 4-5
  * Add access to library functions like sin, exp, and pow.  See <math.h>
  * in appendix B, Section 4
- 
+ *
+ * 4-6 
+ * Add commands for handling variables.  (It's easy to provide twenty-six 
+ * variables with single-letter names.)  Add a variable for the most recently
+ * printed value.
+  
  
  */
 
@@ -39,28 +47,28 @@ int main(void)
     int type;
     double op2;
     char s[MAXOP];
-
+	/* Lower case letters can be used as variables */
     while((type = getop(s)) != EOF) {
         switch(type) {
-            case 'c': /* Clear Stack */
+            case 'C': /* Clear Stack */
                 clear();
                 break;
-            case 'p': /* Print Stack */
+            case 'P': /* Print Stack */
                 printTop();
                 break;
-            case 'd': /* Duplicate Stack */
+            case 'D': /* Duplicate Stack */
                 dup();
                 break;
-            case 's': /* Swap Stack */
+            case 'W': /* Swap Stack */
                 swap();
                 break;
             case 'S': /* Sin(x) */
                 push(sin( pop()));
                 break;
-            case 'e': /* Exponent */
+            case 'E': /* Exponent */
                 push(exp( pop()));
                 break;
-            case 'P': /* Power */
+            case 'O': /* Power */
                 op2 = pop();
                 push( pow( pop(), op2 ) );
                 break;
@@ -92,6 +100,13 @@ int main(void)
                 else
                     printf("Error: zero divisor!\n");
                 break;
+			case '=':
+				/*
+				char var = (int)pop(); // Variable 
+				if(isalpha(var) && islower(var))
+					var_mem[var] = pop(); // Pop value into variable 
+				break;	
+				*/
             case '\n':
                 printf("\t%.8g\n", pop());
                 break;
@@ -141,8 +156,13 @@ int getop(char s[])
     while((s[0] = c = getch()) == ' ' || c == '\t')
         ;
     s[1] = '\0';
-    if (!isdigit(c) && c != '.')
-        return c;
+    if (!isdigit(c) && c != '.') {
+		if(isupper(c)) {
+			return VARIABLE;
+		} else {
+        	return c;
+		}
+	}
     i = 0;
     if (isdigit(c))
         while (isdigit(s[++i] = c = getch()))
