@@ -6,12 +6,14 @@
 * convert an integer into a string by calling a recursive routine.
 **/
 
+#define MAX_BUFFER_SIZE 200
+
 char *itoa(int n, char s[]);
  
 int main(void)
 {
     int n = 20;
-    char buffer[200];
+    char buffer[MAX_BUFFER_SIZE];
     
     printf("Integer: %d\n", n);
     printf("Alpha: %s\n", itoa(n, buffer));
@@ -22,17 +24,20 @@ int main(void)
 char *itoa(int n, char s[])
 {
     static int i = 0;
+    
     if (i >= MAX_BUFFER_SIZE){
         printf("\nBuffer too small to hold string representation!  Exiting...\n\n");
         exit(EXIT_FAILURE);
     }
+    
     if (n < 0) {
         n = -n;
     }
-    
     if (n / 10) {
-        s[i] = itoa(n/10);
+        itoa(n/10, s);
+        s[i++] = '0' + n % 10;
+    } else {
+        s[i] = '\0';
+        return s;
     }
-    
-
 }
