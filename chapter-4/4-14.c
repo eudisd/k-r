@@ -4,7 +4,13 @@
  * (Block structure will help).
  */
 
+#define swap(t, x, y)
+
 int main(void)
 {
-
+    char x = 1, y = 2;
+    printf("x: %d, y: %d", x, y);
+    swap(char, x, y)
+    printf("x: %d, y: %d", x, y);
+    return 0;
 }
