@@ -4,7 +4,11 @@
  * (Block structure will help).
  */
 
-#define swap(t, x, y)
+#define swap(t, x, y) \
+    t temp; \
+    temp = x; \
+    x = y; \
+    y = temp;
 
 int main(void)
 {
